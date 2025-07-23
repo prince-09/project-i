@@ -1,8 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import { ApiResponse } from '@/types';
 
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8080';
+
 async function fetchIPLData(): Promise<ApiResponse> {
-  const response = await fetch('/api/scrape');
+  const response = await fetch(`${BACKEND_URL}/api/ipl-data`);
   if (!response.ok) {
     throw new Error('Failed to fetch IPL data');
   }
